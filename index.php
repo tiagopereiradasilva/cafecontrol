@@ -24,7 +24,7 @@ $router->get("/sobre", "Web:about");
  *  ERROR ROUTES
  */
 $router->namespace("Source\App")->group("/ops"); // Creating a group of routes.
-$router->get("/{errcod}", "Web:error");
+$router->get("/{errcode}", "Web:error");
 
 /**
  *  ROUTES
