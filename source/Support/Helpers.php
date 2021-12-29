@@ -151,6 +151,28 @@ function url(string $path = null): string
 }
 
 /**
+ * @param string|null $path
+ * @return string
+ */
+function theme(string $path = null): string
+{
+    // Checking term "localhost" in url execution... if TRUE Test mode enable.
+    if(strpos($_SERVER["HTTP_HOST"], "localhost")){
+        // Checkin if path exists...
+        if($path){
+            return CONF_URL_TEST . "/themes/".CONF_VIEW_THEME."/". ($path[0] == "/" ? mb_substr($path, 1) : $path);
+        }
+        return CONF_URL_TEST . "/themes/".CONF_VIEW_THEME; // Redirecting for root...
+    }
+
+    // Checkin if path exists...
+    if($path){
+        return CONF_URL_BASE . "/themes/".CONF_VIEW_THEME."/". ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    }
+    return CONF_URL_BASE . "/themes/".CONF_VIEW_THEME;
+}
+
+/**
  * @param string $url
  */
 function redirect(string $url): void
