@@ -44,7 +44,7 @@ class Web extends Controller
      */
     public function error(array $data): void
     {
-        echo $this->view->render("erro", [
+        echo $this->view->render("error", [
             "title" => "{$data['errcode']} | Ooops"
         ]);
     }
