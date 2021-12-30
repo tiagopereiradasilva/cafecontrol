@@ -2,3 +2,8 @@ vendor/*
 00-fsphp-modules/*
 .idea/*
 themes/cafecontrol/__template/*
+
+# File auto-created
+themes/cafecontrol/assets/script.js
+# File auto-created
+themes/cafecontrol/assets/style.css
