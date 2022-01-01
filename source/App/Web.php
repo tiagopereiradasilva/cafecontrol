@@ -25,8 +25,15 @@ class Web extends Controller
      */
     public function home(): void
     {
+        $head = $this->seo->render(
+            CONF_SITE_NAME." - ".CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url(),
+            url("/assets/images/share.jpg")
+        );
         echo $this->view->render("home", [
-            "title" => "CaféControl - Gerencie suas contas com o melhor café"
+            "head" => $head,
+            "video"=>"_7yG_K8gFbI"
         ]);
     }
 
@@ -35,7 +42,32 @@ class Web extends Controller
      */
     public function about(): void
     {
-        echo "<h1>Sobre</h1>";
+        $head = $this->seo->render(
+            "Descubra o ".CONF_SITE_NAME." - ".CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/sobre"),
+            url("/assets/images/share.jpg")
+        );
+        echo $this->view->render("about", [
+            "head" => $head,
+            "video"=>"_7yG_K8gFbI"
+        ]);
+    }
+
+    /**
+     * SITE TERMS
+     */
+    public function terms(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME." - Termos de uso",
+            CONF_SITE_DESC,
+            url("/termos"),
+            url("/assets/images/share.jpg")
+        );
+        echo $this->view->render("terms", [
+            "head" => $head
+        ]);
     }
 
     /**
@@ -44,8 +76,25 @@ class Web extends Controller
      */
     public function error(array $data): void
     {
+        $error = new \stdClass();
+        $error->code = $data['errcode'];
+        $error->title = "Ooops. Contúdo indisponível :/";
+        $error->message = "Sentimos muito, mas o conteúdo que você tentou acessar não existe, está indisponível no momento
+        ou foi removido :/";
+        $error->linkTitle = "Continue navegando";
+        $error->link = url_back();
+
+        $head = $this->seo->render(
+          "{$error->code} | {$error->title}",
+            $error->message,
+            url("/ops/{$error->code}"),
+            url("/assets/iamges/share.jpg"),
+            false
+        );
+
         echo $this->view->render("error", [
-            "title" => "{$data['errcode']} | Ooops"
+            "head" => $head,
+            "error" => $error
         ]);
     }
 }
