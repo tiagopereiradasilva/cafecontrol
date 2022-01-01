@@ -18,20 +18,25 @@ define("CONF_URL_TEST", "https://www.localhost/fsphp");
 /**
  * SITE
  */
-define("CONF_SITE_NAME", "UpInside");
+define("CONF_SITE_NAME", "CaféControl");
 define("CONF_SITE_LANG", "pt_BR");
 define("CONF_SITE_DOMAIN", "upinside.com.br");
+define("CONF_SITE_TITLE", "Gerencie suas contas com o melhor café");
+define("CONF_SITE_DESC", "O CafeControl é um gerenciador de contas simples, poderoso e gratuito. O prazer de tomar um café e ter o controle total de suas contas.");
+
 
 /**
  * SOCIAL
  */
-define("CONF_SOCIAL_TWITTER_CREATOR", "@robsonvleite");
-define("CONF_SOCIAL_TWITTER_PUBLISHER", "@robsonvleite");
+define("CONF_SOCIAL_TWITTER_CREATOR", "@sralgoritmo");
+define("CONF_SOCIAL_TWITTER_PUBLISHER", "@sralgoritmo");
 define("CONF_SOCIAL_FACEBOOK_APP", "626590460695980");
-define("CONF_SOCIAL_FACEBOOK_PAGE", "upinside");
-define("CONF_SOCIAL_FACEBOOK_AUTHOR", "robsonvleiteoficial");
+define("CONF_SOCIAL_FACEBOOK_PAGE", "Sr Algoritmo");
+define("CONF_SOCIAL_FACEBOOK_AUTHOR", "tiagosilva.dev");
+define("CONF_SOCIAL_INSTAGRAM_PAGE", "tiagosilva.dev");
 define("CONF_SOCIAL_GOOGLE_PAGE", "107305124528362639842");
 define("CONF_SOCIAL_GOOGLE_AUTHOR", "103958419096641225872");
+define("CONF_SOCIAL_YOUTUBE_PAGE", "seucanal");
 
 /**
  * DATES

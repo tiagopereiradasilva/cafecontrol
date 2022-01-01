@@ -151,6 +151,15 @@ function url(string $path = null): string
 }
 
 /**
+ * @return string
+ */
+function url_back(): string
+{
+    //Checking if last page access exists for redirect, else redirect to home.
+    return ($_SERVER['HTTP_REFERER'] ?? url());
+}
+
+/**
  * @param string|null $path
  * @return string
  */
