@@ -1,7 +1,6 @@
 vendor/*
 00-fsphp-modules/*
 .idea/*
-themes/cafecontrol/__template/*
 
 #old theme
 themes/cafecontrolback/*
