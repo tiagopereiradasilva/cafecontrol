@@ -3,6 +3,9 @@ vendor/*
 .idea/*
 themes/cafecontrol/__template/*
 
+#old theme
+themes/cafecontrolback/*
+
 # File auto-created
 themes/cafecontrol/assets/script.js
 # File auto-created
