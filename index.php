@@ -19,7 +19,13 @@ $router = new Router(url(), ":"); // Defining url base and separator for routers
 $router->namespace("Source\App"); // Controllers namespace.
 $router->get("/", "Web:home");
 $router->get("/sobre", "Web:about");
+
+$router->get("/blog", "Web:blog");
+$router->get("/blog/page/{page}", "Web:blog");
+$router->get("/blog/{postName}", "Web:blogPost");
+
 $router->get("/termos", "Web:terms");
+
 
 /**
  *  ERROR ROUTES

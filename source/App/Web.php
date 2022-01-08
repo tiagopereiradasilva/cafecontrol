@@ -4,6 +4,7 @@
 namespace Source\App;
 
 
+use CoffeeCode\Paginator\Paginator;
 use Source\Core\Controller;
 
 /**
@@ -29,7 +30,7 @@ class Web extends Controller
             CONF_SITE_NAME." - ".CONF_SITE_TITLE,
             CONF_SITE_DESC,
             url(),
-            url("/assets/images/share.jpg")
+            theme("/assets/images/share.jpg")
         );
         echo $this->view->render("home", [
             "head" => $head,
@@ -46,11 +47,46 @@ class Web extends Controller
             "Descubra o ".CONF_SITE_NAME." - ".CONF_SITE_TITLE,
             CONF_SITE_DESC,
             url("/sobre"),
-            url("/assets/images/share.jpg")
+            theme("/assets/images/share.jpg")
         );
         echo $this->view->render("about", [
             "head" => $head,
             "video"=>"_7yG_K8gFbI"
+        ]);
+    }
+
+    /**
+     * SITE BLOG
+     */
+    public function blog(?array $data):void
+    {
+        $head = $this->seo->render(
+            "Blog - ".CONF_SITE_NAME,
+            "Confira em nosso blog dicas e sacadas para controlar melhor suas contas. Vamos tomar um café?",
+            url("/blog"),
+            theme("/assets/images/share.jpg")
+        );
+        $paginator = new Paginator(url("/blog/page/"));
+        $paginator->pager(100, 10, ($data['page'] ?? 1));
+        echo $this->view->render("blog", [
+            "head" => $head,
+            "paginator" => $paginator->render()
+        ]);
+    }
+
+    public function blogPost(array $data): void
+    {
+        $postName = $data['postName'];
+        $head = $this->seo->render(
+            "POST NAME".CONF_SITE_NAME,
+            "POST HEADLINE",
+            url("/blog/{$postName}"),
+            theme("BLOG IMAGE")
+        );
+
+        echo $this->view->render("blog-post", [
+            "head" => $head,
+            "data" => $this->seo->data()
         ]);
     }
 
@@ -63,7 +99,7 @@ class Web extends Controller
             CONF_SITE_NAME." - Termos de uso",
             CONF_SITE_DESC,
             url("/termos"),
-            url("/assets/images/share.jpg")
+            theme("/assets/images/share.jpg")
         );
         echo $this->view->render("terms", [
             "head" => $head
@@ -88,7 +124,7 @@ class Web extends Controller
           "{$error->code} | {$error->title}",
             $error->message,
             url("/ops/{$error->code}"),
-            url("/assets/iamges/share.jpg"),
+            theme("/assets/iamges/share.jpg"),
             false
         );
 
